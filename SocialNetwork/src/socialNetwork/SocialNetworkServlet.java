@@ -19,5 +19,6 @@ public class SocialNetworkServlet extends HttpServlet {
       } else {
           resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
       }
+      
   }
 }

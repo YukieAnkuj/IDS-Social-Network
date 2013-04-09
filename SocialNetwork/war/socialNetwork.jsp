@@ -24,25 +24,19 @@
 %>
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
+<a href="userForm.jsp">User Form</a>
 <%
     } else {
 %>
 <p>Hello!
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-to include your name with greetings you post.</p>
+<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></p>
+
 <%
     }
 %>
 
-	 <a href="userForm.jsp">User Form</a>
+	 
 
-<% // User profile
-	String users = "users";
-	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-	Key usersKey = KeyFactory.createKey("Users", users);
-	
-	Query query = new Query("user", )
-%>
   
   </body>
 </html>

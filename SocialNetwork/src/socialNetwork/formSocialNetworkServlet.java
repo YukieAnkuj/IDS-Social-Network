@@ -29,24 +29,6 @@ public class formSocialNetworkServlet extends HttpServlet{
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
 
-        String users = "users";
-        Key usersKey = KeyFactory.createKey("Users", users);
-
-        String firstName = req.getParameter("firstName");
-        String lastName = req.getParameter("lastName");
-        
-        Entity userProfile = new Entity ("UserProfile", usersKey);
-        userProfile.setProperty("firstName", firstName);
-        userProfile.setProperty("lastName", lastName);
-        
-        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        datastore.put(userProfile);
-        
-        
-        log.info("Received as first name: " + firstName);
-        log.info("Received as last name: " + lastName);
-
-        resp.sendRedirect("/socialNetwork.jsp");
     }
 
 }
