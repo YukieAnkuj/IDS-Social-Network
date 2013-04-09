@@ -28,7 +28,27 @@ public class formSocialNetworkServlet extends HttpServlet{
                 throws IOException {
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        
+        // Getting info from form
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+       
+        String userEmail = user.getEmail();
+        Entity userProfile = new Entity("UserProfile", userEmail);
+        
+        
+        // Defining this entity
+        userProfile.setProperty("firstName", firstName);
+        userProfile.setProperty("lastName", lastName);
+        
+        // Putting the entity in the database
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        datastore.put(userProfile);
+        
+        resp.sendRedirect("/socialNetwork.jsp");
+        
 
+        
     }
 
 }
