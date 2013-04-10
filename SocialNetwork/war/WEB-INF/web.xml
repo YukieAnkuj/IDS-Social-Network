@@ -13,6 +13,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>userForm</servlet-name>
 		<servlet-class>socialNetwork.formSocialNetworkServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>friendship</servlet-name>
+		<servlet-class>socialNetwork.friendshipServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>SocialNetwork</servlet-name>
@@ -24,7 +29,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/userForm</url-pattern>
 	</servlet-mapping>
 	
+	<servlet-mapping>
+	<servlet-name>friendship</servlet-name>
+		<url-pattern>/requestFriendship</url-pattern>
+	</servlet-mapping>
+	
     <welcome-file-list>
-        <welcome-file>socialNetwork.jsp</welcome-file>
+        <welcome-file>userPage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

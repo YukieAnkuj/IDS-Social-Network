@@ -40,12 +40,13 @@ public class formSocialNetworkServlet extends HttpServlet{
         // Defining this entity
         userProfile.setProperty("firstName", firstName);
         userProfile.setProperty("lastName", lastName);
+        userProfile.setProperty("email", userEmail);
         
         // Putting the entity in the database
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         datastore.put(userProfile);
         
-        resp.sendRedirect("/socialNetwork.jsp");
+        resp.sendRedirect("/userPage.jsp");
         
 
         
