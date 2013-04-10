@@ -5,33 +5,23 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
-		<servlet-name>SocialNetwork</servlet-name>
-		<servlet-class>socialNetwork.SocialNetworkServlet</servlet-class>
+		<servlet-name>postForm</servlet-name>
+		<servlet-class>socialNetwork.postFormServlet</servlet-class>
 	</servlet>
 	
 	<servlet>
 		<servlet-name>userForm</servlet-name>
 		<servlet-class>socialNetwork.formSocialNetworkServlet</servlet-class>
 	</servlet>
-	
-	<servlet>
-		<servlet-name>friendship</servlet-name>
-		<servlet-class>socialNetwork.friendshipServlet</servlet-class>
-	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>SocialNetwork</servlet-name>
-		<url-pattern>/socialnetwork</url-pattern>
+		<servlet-name>postForm</servlet-name>
+		<url-pattern>/postForm</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
 	<servlet-name>userForm</servlet-name>
 		<url-pattern>/userForm</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-	<servlet-name>friendship</servlet-name>
-		<url-pattern>/requestFriendship</url-pattern>
 	</servlet-mapping>
 	
     <welcome-file-list>

@@ -55,7 +55,6 @@
 	// define the email of this userpage
 	pageContext.setAttribute("userProfile_email", userProfileEmail);
 	
-	
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
 	Key userProfileKey = KeyFactory.createKey("UserProfile", userProfileEmail);
@@ -67,16 +66,19 @@
 
 	 pageContext.setAttribute("userProfile_firstName", userProfile.getProperty("firstName"));
 	 pageContext.setAttribute("userProfile_lastName", userProfile.getProperty("lastName"));
+	 
 
-	 /* -------------------- Specific code ---------------------- */	 
+	 /* -------------------- Specific code ---------------------- */
+	 pageContext.setAttribute("userProfile_userName", userProfile.getProperty("userName"));
 	 %>
 	 <div class="profile">
-	<p>${fn:escapeXml(userProfile_email)}</p>
+	
  	 				
   	
 	<p>________________________________</p>
 	 
 	 	<p>Profile</p>
+	 	<p>${fn:escapeXml(userProfile_email)}</p>
 		<table>
 			<tr>
 				<td>First name: </td>
@@ -85,6 +87,10 @@
 			<tr>
 				<td>Last name:</td>
 				<td>${fn:escapeXml(userProfile_lastName)}</td>
+			</tr>
+			<tr>
+				<td>UserName:</td>
+				<td>${fn:escapeXml(userProfile_userName)}</td>
 			</tr>
 		</table> 
 	</div>
@@ -125,6 +131,58 @@
 
 		</table> 
 		</div>
+		
+		<div class="messageBoard">
+			<p>________________________________</p>
+				<%
+		    // Run query to get the posts of this userProfile
+		    Filter targetUserPosts = new FilterPredicate("boardEmail", FilterOperator.EQUAL,userProfileEmail);
+			System.out.println("Inside user page, username: " +userProfile.getProperty("userName"));
+		    
+		    Query queryPost = new Query("Post").setFilter(targetUserPosts).addSort("date", Query.SortDirection.DESCENDING);
+
+
+		    List<Entity> posts = datastore.prepare(queryPost).asList(FetchOptions.Builder.withLimit(5));
+		    
+		    if (posts.isEmpty()) {
+		        %>
+		        <p>No posts.</p>
+		        <%
+		    } else {
+		        %>
+		        <p>Posts:</p>
+		        <%
+		        for (Entity post : posts) {
+		            pageContext.setAttribute("post_content", post.getProperty("content"));
+		            pageContext.setAttribute("post_userName", post.getProperty("userNamePoster"));
+		            pageContext.setAttribute("post_date", post.getProperty("date"));
+		                %>
+		                <p><b>${fn:escapeXml(post_userName)}</b> wrote:</p>
+			            <p>${fn:escapeXml(post_content)}</p>
+			            <p>(${fn:escapeXml(post_date)})</p>
+			            <p>. . . . . . . . . . . . . . .</p>
+		            <%
+		        }
+		    }
+		    
+		    // Finding the userName of the logged user
+	    	Entity loggedUser = datastore.get(loggedUserKey);
+	    	pageContext.setAttribute("loggedUser_userName", loggedUser.getProperty("userName"));
+	    		
+		%>
+
+		    <form action="/postForm" method="post">
+		      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+		      <div><input type="submit" value="Post message" /></div>
+		      <input type="hidden" name="userNameBoard" value="${fn:escapeXml(userProfile_userName)}"/>
+		      <input type="hidden" name="userNamePoster" value="${fn:escapeXml(loggedUser_userName)}"/>
+		      <input type="hidden" name="boardEmail" value="${fn:escapeXml(userProfile_email)}"/>
+			</form>
+
+		
+		
+		</div>
+		
 		
 		<div class="editForm">		
 			<%

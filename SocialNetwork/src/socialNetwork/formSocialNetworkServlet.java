@@ -11,7 +11,6 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
@@ -32,14 +31,15 @@ public class formSocialNetworkServlet extends HttpServlet{
         // Getting info from form
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-       
+        String userName = firstName.concat(" ").concat(lastName);
+        
         String userEmail = user.getEmail();
         Entity userProfile = new Entity("UserProfile", userEmail);
-        
         
         // Defining this entity
         userProfile.setProperty("firstName", firstName);
         userProfile.setProperty("lastName", lastName);
+        userProfile.setProperty("userName", userName);
         userProfile.setProperty("email", userEmail);
         
         // Putting the entity in the database
