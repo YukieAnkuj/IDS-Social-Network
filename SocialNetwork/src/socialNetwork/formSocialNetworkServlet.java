@@ -27,6 +27,7 @@ public class formSocialNetworkServlet extends HttpServlet{
                 throws IOException {
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         
         // Getting info from form
         String firstName = req.getParameter("firstName");
@@ -36,6 +37,22 @@ public class formSocialNetworkServlet extends HttpServlet{
         String userEmail = user.getEmail();
         Entity userProfile = new Entity("UserProfile", userEmail);
         
+        // getting interests
+        String[] interests = req.getParameterValues("interest");
+        for (int i = 0; i< interests.length; i++) {
+        	// For each interest, create a new entity
+        	System.out.println("interest Name: " + interests[i]);
+        	String interestRelID = interests[i].concat(userEmail);
+        	Entity interestRel = new Entity("InterestRelation",interestRelID);
+        	
+        	// Defining the entity
+        	interestRel.setProperty("interestName", interests[i]);
+        	interestRel.setProperty("userEmail", userEmail);
+        	
+        	// Putting in the datastore
+        	datastore.put(interestRel);
+        }
+        
         // Defining this entity
         userProfile.setProperty("firstName", firstName);
         userProfile.setProperty("lastName", lastName);
@@ -43,7 +60,6 @@ public class formSocialNetworkServlet extends HttpServlet{
         userProfile.setProperty("email", userEmail);
         
         // Putting the entity in the database
-        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         datastore.put(userProfile);
         
         resp.sendRedirect("/userPage.jsp");

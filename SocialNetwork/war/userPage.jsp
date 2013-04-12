@@ -17,7 +17,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Social Network</title>
+</head>
   <body>
 <%
     UserService userService = UserServiceFactory.getUserService();
@@ -29,16 +32,8 @@
       
 
 %>
-<div class="header"><p>This is the Header</p>
-	 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-	 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-</div>
-<div class="menu"><p>________________________________</p>
-	 <p>This is the Menu</p>
-	 <a href="userPage.jsp?email=${fn:escapeXml(loggedUser_email)}">Home</a>
-	 <a href="searchUsers.jsp">Search people</a>
-	 <a href="">Search groups</a>
-	 </div>
+	<%@include file="header.jsp" %>
+	<%@include file="menu.jsp" %>
 
 
 	<% 
@@ -70,6 +65,7 @@
 
 	 /* -------------------- Specific code ---------------------- */
 	 pageContext.setAttribute("userProfile_userName", userProfile.getProperty("userName"));
+	 String targetEmail = userProfileEmail;
 	 %>
 	 <div class="profile">
 	
@@ -92,7 +88,41 @@
 				<td>UserName:</td>
 				<td>${fn:escapeXml(userProfile_userName)}</td>
 			</tr>
+		</table>
+	<div class="interestList">
+		<p>. . . . . . . . . . . . . . . . . . </p>
+	 	<p>Interests</p>
+		<table>
+			<% 	
+				// Looking InterestRelation entity related to this user
+				
+				Filter targetUserInterest = new FilterPredicate("userEmail", FilterOperator.EQUAL,targetEmail);
+				
+				Query queryInterest = new Query("InterestRelation").setFilter(targetUserInterest);
+				
+
+				/* create the list of entities*/
+			 	List<Entity> interests = datastore.prepare(queryInterest).asList(FetchOptions.Builder.withLimit(20));
+				if (interests.isEmpty()) {
+					%>
+						<p> No interests</p>
+					<%
+				}
+				else {
+	 				for (Entity interest: interests) {
+	 					pageContext.setAttribute("interestName", interest.getProperty("interestName"));
+	 	 				
+					%>
+						<tr>
+							<td>${fn:escapeXml(interestName)}</td>
+						</tr>
+					<%
+	 				}
+				}
+			%>
+
 		</table> 
+		</div>
 	</div>
 	<div class="friendsList">
 		<p>________________________________</p>
@@ -100,7 +130,6 @@
 		<table>
 			<% 	
 				// Looking friendshipRelation entity related to this user
-				String targetEmail = userProfileEmail; 
 				System.out.println("This email: "+userProfileEmail);
 				Filter targetUser = new FilterPredicate("firstPersonEmail", FilterOperator.EQUAL,targetEmail);
 				

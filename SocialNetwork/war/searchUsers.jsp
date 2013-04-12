@@ -21,7 +21,10 @@
 
 
 <html>
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Social Network</title>
+</head>
   <body>
 <%
     UserService userService = UserServiceFactory.getUserService();
@@ -33,16 +36,10 @@
       
 
 %>
-<div class="header"><p>This is the Header</p>
-	 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-	 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-</div>
-<div class="menu"><p>________________________________</p>
-	 <p>This is the Menu</p>
-	 <a href="userPage.jsp?email=${fn:escapeXml(loggedUser_email)}">Home</a>
-	 <a href="searchUsers.jsp">Search people</a>
-	 <a href="">Search groups</a>
-	 </div>
+	<%@include file="header.jsp" %>
+	<%@include file="menu.jsp" %>
+
+
 
 
 	<% 

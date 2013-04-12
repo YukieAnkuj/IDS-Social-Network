@@ -14,7 +14,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Social Network</title>
+</head>
   <body>
   	<%
 	    // Getting info from form
@@ -62,6 +65,5 @@
 		<p>Friendship request sent</p>
 		<a href="searchUsers.jsp">Go back</a>
 		
-  				
   </body>
 </html>
