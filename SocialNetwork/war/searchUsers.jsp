@@ -36,8 +36,8 @@
       
 
 %>
-	<%@include file="header.jsp" %>
-	<%@include file="menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
+	<%@include file="partial/menu.jsp" %>
 
 
 

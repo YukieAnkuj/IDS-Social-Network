@@ -11,7 +11,7 @@
   <body>
 
 	<div class="menu"><p>________________________________</p>
-	 <p>This is the Menu</p>
+	 <p>NEW This is the Menu</p>
 	 <a href="userPage.jsp?email=${fn:escapeXml(loggedUser_email)}">Home</a>
 	 <a href="searchUsers.jsp">Search people</a>
 	 <a href="searchInterest.jsp">Search by similar interest</a>
