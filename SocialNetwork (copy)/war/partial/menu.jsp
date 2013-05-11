@@ -15,7 +15,6 @@
 	 <a href="userPage.jsp?email=${fn:escapeXml(loggedUser_email)}">Home</a>
 	 <a href="searchUsers.jsp">Search people</a>
 	 <a href="searchInterest.jsp">Search by similar interest</a>
-	 <a href="manageGroups.jsp">Manage Groups</a>
 	 </div>
   
   </body>

@@ -1,0 +1,28 @@
+Datastore
+
+Table:
+	UserProfile (firstName, lastName, userName, email)
+		key obtained through email
+
+	Post (content, userNameBoard, userNamePoster, date, boardEmail)
+		key obtained through boardEmail+date
+
+	FriendshipRelation (firstPersonEmail, secondPersonEmail)
+		key obtained through firstPersonEmail&secondPersonEmail  (or the other way around)
+
+	InterestRelation (interestName, userEmail)
+		key obtained through interestName+userEmail
+
+
+
+
+List of interest
+fashion
+movies
+music
+games
+books
+sports
+tv
+science
+politics

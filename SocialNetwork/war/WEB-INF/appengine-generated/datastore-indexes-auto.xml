@@ -1,17 +1,11 @@
-<!-- Indices written at Tue, 30 Apr 2013 10:15:45 CEST -->
+<!-- Indices written at Sat, 11 May 2013 00:11:11 CEST -->
 
 <datastore-indexes>
 
-    <!-- Used 7 times in query history -->
+    <!-- Used 2 times in query history -->
     <datastore-index kind="Post" ancestor="false" source="auto">
         <property name="boardEmail" direction="asc"/>
         <property name="date" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 8 times in query history -->
-    <datastore-index kind="InterestRelation" ancestor="false" source="auto">
-        <property name="interestName" direction="asc"/>
-        <property name="userEmail" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>
