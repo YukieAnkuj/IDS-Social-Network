@@ -23,9 +23,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css" />
 <title>Social Network</title>
 </head>
   <body>
+    <div id="mainWrap">
+	<div id="mainPanel">
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -36,8 +39,8 @@
       
 
 %>
-	<%@include file="partial/header.jsp" %>
 	<%@include file="partial/menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
 
 
 
@@ -72,8 +75,9 @@
 
 	 /* -------------------- Specific code ---------------------- */
 	 %>
+	 	<div id="leftPanel">
 
-	 	<div class="searchUsers"><p>Search users: </p>
+	 	<div class="search"><h2>Search users: </h2>
 	 	<%
 			
 	 		Query query = new Query("UserProfile");
@@ -85,7 +89,7 @@
 	 		}
 	 		else {
 	 			%>
- 					<p>Users:</p>
+ 		
  					<table>
 
  				<%
@@ -97,12 +101,12 @@
  	 				if (!otherUserProfile.getKey().toString().equalsIgnoreCase(loggedUserKey.toString())) {
  				%>
  					<tr>
-						<td>First name: </td>
-						<td>${fn:escapeXml(otherUserProfile_firstName)}</td>
-						<td>Last name:</td>
-						<td>${fn:escapeXml(otherUserProfile_lastName)}</td>
-						<td>Email:</td>
-						<td>${fn:escapeXml(otherUserProfile_email)}</td>
+						<td><h3>First name: </h3></td>
+						<td><p>${fn:escapeXml(otherUserProfile_firstName)}</p></td>
+						<td><h3>Last name:</h3></td>
+						<td><p>${fn:escapeXml(otherUserProfile_lastName)}</p></td>
+						<td><h3>Email:</h3></td>
+						<td><p>${fn:escapeXml(otherUserProfile_email)}</p></td>
 				<%
 					
 				String friendEmail = otherUserProfile.getProperty("email").toString();
@@ -120,7 +124,7 @@
 				 	List<Entity> friendships = datastore.prepare(queryFriend).asList(FetchOptions.Builder.withLimit(2));
 					if (!friendships.isEmpty()) {
 						%>
-							<td>Already a friend</td>
+							<td><p>Already a friend</p></td>
 							</tr>
  						<%
 					}
@@ -128,45 +132,50 @@
 						// Allows to request friendship for those that aren't friends
 				%>
 
-						<td><a href=requestFriendship.jsp?id1=${fn:escapeXml(loggedUser_email)}&id2=${fn:escapeXml(otherUserProfile_email)}>Request Friendship</a></td>
+						<td><p><a href=requestFriendship.jsp?id1=${fn:escapeXml(loggedUser_email)}&id2=${fn:escapeXml(otherUserProfile_email)}>Request Friendship</a></p></td>
 					</tr>
  				<%
  					}
  	 				}
  				}
  			%>
- 				</table></div>
+ 				</table>
  			<%
 	 		
     	}
 	 	%>
-	 	
+	 	</div>
+
+	</div> <!-- Closing left panel -->
+	
+
 	<%
 	
 	} catch (EntityNotFoundException e) {
 	 // TODO Auto-generated catch block
-	 %><div class="noProfile">
-	 	<p>You have no profile, please fill the form</p>
-	 	<a href="userForm.jsp">User Form</a>
-	 	</div>
-	 <%
-	 //e.printStackTrace();
-	}
+		 %><div id="leftPanel">
+		 	<div class="noProfile">
+		 	<h2>You have no profile, please fill the form</h2>
+		 	<p><a href="userForm.jsp">User Form</a></p>
+		 	</div>
+		 	</div> 
+		 	<!--  Close left panel -->
+		 	<%
+    } }else {
+    	%> 
+        <div id=leftPanel></div>
+    	<%@include file="partial/login.jsp" %>
 
-%>
+    <%
+        }
+    %>
 
-<%
-    } else {
-%> 	<div class="login">
-		<p>Hello!
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></p>
-	</div>
-<%
-    }
-%>
+<div id="rightPanel"></div>
 
+<%@include file="partial/footer.jsp" %>
 	 
-
+</div> <!-- Closing main wrap -->
+</div> <!--  main panel -->
 
   
   </body>

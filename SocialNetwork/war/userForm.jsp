@@ -16,9 +16,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css" />
 <title>Social Network</title>
 </head>
   <body>
+    <div id="mainWrap">
+	<div id="mainPanel">
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -29,8 +32,8 @@
       
 
 %>
-	<%@include file="partial/header.jsp" %>
 	<%@include file="partial/menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
 
 	
 	<% 
@@ -61,26 +64,32 @@
 			 														,"books","sports","tv","science","politics"));
 
 	 %>
-
-	<div class="form"><h1>Fill the form</h1>
+	<div id="leftPanel">
+	<div class="formClass">
+	<h2>Fill the form</h2>
 
 	  <form action="/userForm" method="get">
-	    <div>First name: <input type="text" name="firstName"></div>
-	    <div>Last name: <input type="text" name="lastName" /></div>
-	    <div><input type="radio" name="sex" value="male">Male
-	    	 <input type="radio" name="sex" value="female">Female</div>
-	    <div class="interestForm"><p>Choose your interests:</p> 
+	    <p>First name:<input type="text" name="firstName"> </p>
+	    <p>Last name:<input type="text" name="lastName" > </p>
+		
+	    <p><br><input type="radio" name="sex" value="male">Male</p>
+	    <p><input type="radio" name="sex" value="female">Female</p>
+
+	    <p><br>Choose your interests:</p>
 	    	<% for(int i = 0; i < interestList.size(); i++) {
 	    		pageContext.setAttribute("interestName", interestList.get(i));
 	    	%>
-	    		<input type="checkbox" name="interest" value=${fn:escapeXml(interestName)}>${fn:escapeXml(interestName)}<br>
+	    		<input type="checkbox" name="interest" value="${fn:escapeXml(interestName)}">${fn:escapeXml(interestName)}<br>
 	    	<%
 	    		}
-	    	%>
-		</div>
-	    <div><input type="submit" value="Submit" /></div>
-	  </form></div>	
-	 	
+	    	%>	    
+	    <input type="submit" class="buttonStyle" value="Submit" >
+	  </form>
+
+	</div>
+	</div> <!-- Closing left Panel -->
+	 
+	 <div id="rightPanel"></div>
 	 	
 	<%
 
@@ -88,17 +97,18 @@
 
 <%
     } else {
-%> 	<div class="login">
-		<p>Hello!
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></p>
-	</div>
+%>
+
+	<%@include file="partial/login.jsp" %>
+
 <%
     }
 %>
 
-	 
+<%@include file="partial/footer.jsp" %>	 
 
-
+</div> <!-- Closing main wrap -->
+</div> <!--  main panel -->
   
   </body>
 </html>

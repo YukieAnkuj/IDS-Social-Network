@@ -1,16 +1,6 @@
 
-<%@page import="com.google.appengine.api.datastore.Query.FilterOperator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Social Network</title>
-</head>
-<body>
-		<div class="messageBoard">
-			<p>________________________________</p>
+		<div class="post">
+			
 				<%
 		    // Run query to get the posts of this userProfile
 		    Filter targetUserPosts = new FilterPredicate("boardEmail", FilterOperator.EQUAL,userProfileEmail);
@@ -23,42 +13,26 @@
 		    
 		    if (posts.isEmpty()) {
 		        %>
-		        <p>No posts.</p>
+		        <h2>No posts</h2>
 		        <%
 		    } else {
-		        %>
-		        <p>Posts:</p>
-		        <%
+		    	%>
+		    	<h2>Posts</h2>
+		    	<%
 		        for (Entity post : posts) {
 		            pageContext.setAttribute("post_content", post.getProperty("content"));
 		            pageContext.setAttribute("post_userName", post.getProperty("userNamePoster"));
 		            pageContext.setAttribute("post_date", post.getProperty("date"));
 		                %>
-		                <p><b>${fn:escapeXml(post_userName)}</b> wrote:</p>
-			            <p>${fn:escapeXml(post_content)}</p>
-			            <p>(${fn:escapeXml(post_date)})</p>
-			            <p>. . . . . . . . . . . . . . .</p>
+		                <p><span>${fn:escapeXml(post_content)}</p>
+			            <h3><span>by</span> ${fn:escapeXml(post_userName)}<date>(${fn:escapeXml(post_date)})</date></h3>
+			            
+			            
 		            <%
 		        }
 		    }
-		    
-		    // Finding the userName of the logged user
-	    	Entity loggedUser = datastore.get(loggedUserKey);
-	    	pageContext.setAttribute("loggedUser_userName", loggedUser.getProperty("userName"));
-	    		
 		%>
-
-		    <form action="/postForm" method="post">
-		      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-		      <div><input type="submit" value="Post message" /></div>
-		      <input type="hidden" name="userNameBoard" value="${fn:escapeXml(userProfile_userName)}"/>
-		      <input type="hidden" name="userNamePoster" value="${fn:escapeXml(loggedUser_userName)}"/>
-		      <input type="hidden" name="boardEmail" value="${fn:escapeXml(userProfile_email)}"/>
-			</form>
 
 		
 		
 		</div>
-</div>
-</body>
-</html>

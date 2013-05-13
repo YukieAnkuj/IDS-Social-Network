@@ -23,9 +23,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css" />
 <title>Social Network</title>
 </head>
   <body>
+    <div id="mainWrap">
+	<div id="mainPanel">
+	
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -36,8 +40,8 @@
       
 
 %>
-	<%@include file="partial/header.jsp" %>
 	<%@include file="partial/menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
 
 
 
@@ -72,71 +76,91 @@
 
 	 /* -------------------- Specific code ---------------------- */
 	 %>
-
-	 	<div class="manageGroups"><p>Manage groups: </p>
+		<div id="leftPanel">
+	 	<div class="search"><h2>Manage groups: </h2>
 	 	<%
+	
 			
-	 		Query query = new Query("GroupRelation");
+	 		Query query = new Query("GroupProfile");
 	 		List<Entity> groups = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(20));
 	 		if (groups.isEmpty()) {
 	 			%>
-	 				<p>No groups registered</p>
-	 			<%
-	 				// Show the option to add a group
-	 			%>
-	 				<a href="createGroup.jsp">Create a group</a>
+	 				<h3>No groups registered</h3>
 	 			<%
 	 		}
 	 		else {
 	 			%>
- 					<p>Groups:</p>
  					<table>
 
  				<%
- 				// other user is any user that isn't the one logged in
+ 				
  				for (Entity groupRelation: groups) {
- 					pageContext.setAttribute("group_name", groupRelation.getProperty("groupName"));
- 				%>
- 					<tr>
-						<td>Group name: </td>
-						<td>${fn:escapeXml(group_name)}</td>
-					</tr>
-					
-				<%
+ 					//Filter targetUser = new FilterPredicate("userEmail", FilterOperator.EQUAL, loggedUserEmail);
+ 					String groupName = groupRelation.getProperty("groupName").toString();
+ 					String keyString = groupName.concat("&").concat(loggedUserEmail);
+	 				Key groupRelationKey = KeyFactory.createKey("GroupRelation", keyString);
+	 				pageContext.setAttribute("group_name", groupRelation.getProperty("groupName"));
+
+ 					try {
+ 						// this user is a member is a member
+ 						Entity testGroupRelation = datastore.get(groupRelationKey);
+ 						
+ 		 				%>
+ 	 					<tr>
+ 							<td><h3>Group name: </h3></td>
+ 							<td><p><a href="groupPage.jsp?group=${fn:escapeXml(group_name)}">${fn:escapeXml(group_name)}</a></p></td>
+ 						
+ 						</tr>
+
+ 						<%
+ 					}
+ 					catch (EntityNotFoundException e) {
+ 						// this user is not a member
+						%>
+							<!-- <tr><td><p>No groups</p></td></tr> -->
+						<%
+ 					}
+	 					
+ 					
  				}
- 			%>
- 				</table></div>
- 			<%
-	 		
+	 		%></table><br><br><%
     	}
 	 	%>
-	 	
+	 	<!-- Show the option to add a group -->
+		<p><a href="createGroup.jsp">Create a group</a></p>
+		</div>
+		
+		</div><!--  Close left panel -->
 	<%
 	
 	} catch (EntityNotFoundException e) {
 	 // TODO Auto-generated catch block
-	 %><div class="noProfile">
-	 	<p>You have no profile, please fill the form</p>
-	 	<a href="userForm.jsp">User Form</a>
-	 	</div>
-	 <%
-	 //e.printStackTrace();
+		 %><div id="leftPanel">
+		 	<div class="noProfile">
+		 	<h2>You have no profile, please fill the form</h2>
+		 	<p><a href="userForm.jsp">User Form</a></p>
+		 	</div>
+		 	</div> 
+		 	<!--  Close left panel -->
+		 	
+		 <%
 	}
 
 %>
 
 <%
     } else {
-%> 	<div class="login">
-		<p>Hello!
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></p>
-	</div>
+%> 
+    <div id=leftPanel></div>
+	<%@include file="partial/login.jsp" %>
+
 <%
     }
 %>
-
-	 
-
+<div id="rightPanel"></div>
+<%@include file="partial/footer.jsp" %>	 
+</div> <!-- Closing main wrap -->
+</div> <!--  main panel -->
 
   
   </body>

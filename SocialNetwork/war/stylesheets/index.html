@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TemplateWorld - Solitude</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="images/icon.ico" /> 
+<script type="text/javascript" src="iepngfix_tilebg.js"></script> 
+<script type="text/javascript" src="iepngfix.js"></script> 
+</head>
+
+<body>
+<div id="mainWrap">
+<div id="mainPanel">
+ <div id="menu">
+  <ul>
+   <li><a href="#"><span>Home</span></a></li>
+   <li><div class="blank"></div></li>
+   <li><a href="#"><span>Search people</span></a></li>
+   <li><div class="blank"></div></li>
+   <li><a href="#"><span>Search Interest</span></a></li>
+   <li><div class="blank"></div></li>
+   <li><a href="#"><span>Groups</span></a></li>
+  </ul>
+ </div>
+  <div id="logoWrap"><h1>solitude</h1></div>
+
+
+ <div id="loginPanel">
+  <h2>User Login</h2>
+  <input name="name" type="text" value="User Name" onfocus="if(this.value=='User Name')this.value=''" onblur="if(this.value=='')this.value='User Name'"/>
+   <div class="blank"></div>
+  <input name="name" type="text" value="Password" onfocus="if(this.value=='Password')this.value=''" onblur="if(this.value=='')this.value='Password'"/>
+  <a href="#" class="login">Login</a>
+ </div>
+
+
+ <div id="greeting"><p>Hello, blah</p></div>
+
+
+ <div id="leftPanel">
+  <div class="about">
+   <h2>About me</h2>
+		<table>
+			<tr>
+				<td><h3>First name: </h3></td>
+				<td><p>lucasFirst</p></td>
+				<td><a href="#">${fn:escapeXml(friend_id)}</a></td>		
+			</tr>
+			<tr>
+				<td><h3>Last name:</h3></td>
+				<td><p>lucasLast</p></td>
+			</tr>
+			<tr>
+				<td><h3>UserName:</h3></td>
+				<td><p>lucas username</p></td>
+			</tr>
+		</table>
+  </div>
+
+  <div class="interests">
+   <h2>Interests</h2>
+   <ul>
+    <li>interest1</li>
+    <li>interest2</li>
+   </ul>
+   </div>
+  <div class="post">
+   <h2>Posts</h2>
+   <p> <span>Nullam vel justo. Mauris viverra mattis neque.</span> Phasellus feugiat pede ut mauris uis orcies tibulum eleifend. Donec est purusiaculis acauctorNullam vel justo. Mauris viverra mattis neque. Phasellus feugiat pede ut mauris. Duis orci.</p>
+   <h3><span>by</span> David Jackson</h3>
+    <p><span>Vel justo. Mauris viverra mattis neque  asellus feugiat pede ut mauris uis orcies tibulum</span> eleifend. Donec est purusiaculis acauctorNullam vel justo. Mauris viverra mattis neque. Phasellus feugiat pede ut mauris.</p>
+   <h3><span>by</span> Tom Sam<date>data</date></h3>
+  </div>
+
+  <div class="friends">
+   <h2>Friends</h2>
+   <ul>
+   	<li><a href="#">${fn:escapeXml(friend_id)}</a></li>
+	<li><a href="#">${fn:escapeXml(friend_id)}</a></li>
+   </ul>
+   </div>
+
+  <div class="changeProfile">
+    <p><a href="#"><span>Change your profile</span></a></p>
+   </div>
+
+ </div>
+
+
+
+
+ <div id="rightPanel">
+  <h2>Photo Stock</h2>
+  <div class="pic1"></div>
+  <a href="#" class="view">view large</a>
+   <div class="pic2"></div>
+  <a href="#" class="view">view large</a>
+   <div class="pic3"></div>
+  <a href="#" class="view">view large</a>
+
+
+
+  <div class="postMessage">
+   <h2>Post a message</h2>
+   <textarea name="content" rows="6" cols="30" placeholder="Write a message..."></textarea>
+   <div class="blank"></div><input type="submit" class="buttonStyle" value="Post message"/>
+
+
+  </div>
+
+
+ </div>
+</div>
+</body>
+</html>

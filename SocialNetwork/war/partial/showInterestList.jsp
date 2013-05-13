@@ -1,18 +1,8 @@
-<%@page import="com.google.appengine.api.datastore.Query.FilterOperator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Social Network</title>
-</head>
-<body>
 	
-	<div class="interestList">
-		<p>. . . . . . . . . . . . . . . . . . </p>
-	 	<p>NEW Interests</p>
-		<table>
+	<div class="interests">
+	 	<h2>Interests</h2>
+	 	<ul>
 			<% 	
 				// Looking InterestRelation entity related to this user
 				
@@ -25,7 +15,7 @@
 			 	List<Entity> interests = datastore.prepare(queryInterest).asList(FetchOptions.Builder.withLimit(20));
 				if (interests.isEmpty()) {
 					%>
-						<p> No interests</p>
+						<li> No interests</li>
 					<%
 				}
 				else {
@@ -34,17 +24,11 @@
 	 					pageContext.setAttribute("interestName", interest.getProperty("interestName"));
 	 	 				
 					%>
-						<tr>
-							<td>${fn:escapeXml(interestName)}</td>
-						</tr>
+							<li>${fn:escapeXml(interestName)}</li>
 					<%
 	 				}
 				}
 			%>
-
-		</table> 
+		</ul>
 		</div>
-	</div>
 
-</body>
-</html>

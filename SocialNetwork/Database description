@@ -13,7 +13,16 @@ Table:
 	InterestRelation (interestName, userEmail)
 		key obtained through interestName+userEmail
 
-
+	GroupProfile (groupName, description)
+		key obtained through groupName
+		
+	GroupRelation (groupName, userEmail)
+		key obtained through groupName&userEmail
+	
+	GroupPost (content, boardGroupName, userNamePoster, date)
+		key obtained through boardGroupName+date
+	
+		
 
 
 List of interest

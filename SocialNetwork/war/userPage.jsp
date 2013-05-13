@@ -24,9 +24,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css" />
 <title>Social Network</title>
 </head>
   <body>
+  <div id="mainWrap">
+	<div id="mainPanel">
+
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -37,10 +41,11 @@
       
 
 %>
-	<%@include file="partial/header.jsp" %>
+
 	<%@include file="partial/menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
 
-
+    
 	<% 
 	String userProfileEmail; // Email of this userPage
 	ServletRequest req = pageContext.getRequest();
@@ -66,57 +71,70 @@
 
 	 String targetEmail = userProfileEmail;
 	 %>
+	 <div id="leftPanel">
 	<custom:SetUserProfile/> 				
 	<%@include file="partial/showUserProfile.jsp" %>
   	
   	<%@include file="partial/showInterestList.jsp" %> 
 	
-	<%@include file="partial/showFriendsList.jsp" %> 
-	
 	<%@include file="partial/showMessageBoard.jsp" %> 
+	
+	<%@include file="partial/showFriendsList.jsp" %> 	
+	
 		
-		
-		
-		<div class="editForm">		
 			<%
 				if (loggedUserEmail.equalsIgnoreCase(userProfileEmail)) {
 			%>
-		 	<p>________________________________</p>
-		 	<a href="userForm.jsp">Change your profile</a>
+		 	  	<div class="changeProfile">
+		    	<p><a href="userForm.jsp"><span>Change your profile</span></a></p>
+		  		</div>
 		 	<%
+
 				}
 		 	%>
-	 	</div>
+
 	 	
+	 	</div> <!-- Close left panel -->
 	 	
+	 	<div id="rightPanel">
+	 	<!-- Pictures -->
+	 	  <h2>Photo Stock</h2>
+		  <div class="pic1"></div>
+		   <div class="pic2"></div>
+		   <div class="pic3"></div>
+  
+  		
+  
+	 	<%@include file="partial/postMessageBoard.jsp" %>
 	 	
+	 	</div> <!-- Close right panel -->
 	<%
 	
 	} catch (EntityNotFoundException e) {
 	 // TODO Auto-generated catch block
-	 %><div class="noProfile">
-	 	<p>You have no profile, please fill the form</p>
-	 	<a href="userForm.jsp">User Form</a>
-	 	</div>
-	 <%
-	 //e.printStackTrace();
-	}
+	 %><div id="leftPanel">
+	 	<div class="noProfile">
+	 	<h2>You have no profile, please fill the form</h2>
+	 	<p><a href="userForm.jsp">User Form</a></p>
+		</div>
+	 	</div> 	<!--  Close left panel -->
 
-%>
 
 <%
-    } else {
-%> 	<div class="login">
-		<p>Hello!
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></p>
-	</div>
-<%
-    }
-%>
+    } }else {
+    	%> 
+        <div id=leftPanel></div>
+    	<%@include file="partial/login.jsp" %>
 
-	 
+    <%
+        }
+    %>
 
+<div id="rightPanel"></div>	 
+<%@include file="partial/footer.jsp" %>
 
+</div> <!-- Closing main wrap -->
+</div> <!--  main panel -->
   
   </body>
 </html>

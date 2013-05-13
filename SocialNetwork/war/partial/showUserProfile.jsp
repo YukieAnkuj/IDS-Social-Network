@@ -1,33 +1,20 @@
-<%@page import="com.google.appengine.api.datastore.Query.FilterOperator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Social Network</title>
-</head>
-<body>
-	<div class="profile">
+	  <div class="about">
 	
-	<p>________________________________</p>
 	 
-	 	<p>NEW Profile</p>
-	 	<p>${fn:escapeXml(userProfile_email)}</p>
+	 	<h2>${fn:escapeXml(userProfile_email)}</h2>
 		<table>
 			<tr>
-				<td>First name: </td>
-				<td>${fn:escapeXml(userProfile_firstName)}</td>
+				<td><h3>First name: </h3></td>
+				<td><p>${fn:escapeXml(userProfile_firstName)}</p></td>
 			</tr>
 			<tr>
-				<td>Last name:</td>
-				<td>${fn:escapeXml(userProfile_lastName)}</td>
+				<td><h3>Last name:</h3></td>
+				<td><p>${fn:escapeXml(userProfile_lastName)}</p></td>
 			</tr>
 			<tr>
-				<td>UserName:</td>
-				<td>${fn:escapeXml(userProfile_userName)}</td>
+				<td><h3>UserName:</h3></td>
+				<td><p>${fn:escapeXml(userProfile_userName)}</p></td>
 			</tr>
 		</table>
-
-</body>
-</html>
+	</div>

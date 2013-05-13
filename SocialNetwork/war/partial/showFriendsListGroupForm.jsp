@@ -1,20 +1,11 @@
-<%@page import="com.google.appengine.api.datastore.Query.FilterOperator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Social Network</title>
-</head>
-<body>
-	<div class="friendsListGroupForm">
-	 	<p>Friends</p>
-		<table>
+	<div class="friends">
+	 	<h2>Friends</h2>
+
 			<% 	
 				// Looking friendshipRelation entity related to this user
-				System.out.println("This email: "+userProfileEmail);
-				Filter targetUser = new FilterPredicate("firstPersonEmail", FilterOperator.EQUAL,targetEmail);
+				System.out.println("This email: "+loggedUserEmail);
+				Filter targetUser = new FilterPredicate("firstPersonEmail", FilterOperator.EQUAL,loggedUserEmail);
 				
 				Query query = new Query("FriendshipRelation").setFilter(targetUser);
 				
@@ -23,26 +14,50 @@
 			 	List<Entity> friendships = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(20));
 				if (friendships.isEmpty()) {
 					%>
-						<p> No friends</p>
+						<p> No friends to invite</p>
 					<%
 				}
 				else {
-	 				for (Entity friendship: friendships) {
-	 					// Get the friend's email to print it later
-	 					pageContext.setAttribute("friend_id", friendship.getProperty("secondPersonEmail"));
-	 	 				
 					%>
-						<tr>
-							<td>Friend email: </td>
-							<td><a href="userPage.jsp?email=${fn:escapeXml(friend_id)}">${fn:escapeXml(friend_id)}</a></td>
-						</tr>
+					<ul>
+					<form action="/addMembersForm" method="post">
+					<%
+	 				for (Entity friendship: friendships) {
+	 					String friendEmail = friendship.getProperty("secondPersonEmail").toString();
+	 					// Get the friend's email to print it later
+	 					pageContext.setAttribute("friend_id", friendEmail);
+	 					
+	 					// see if the person is not already a member
+	 					String keyString = groupName.concat("&").concat(friendEmail);
+	 					Key groupRelationKey = KeyFactory.createKey("GroupRelation", keyString);
+				 		
+	 					try {
+	 						// friend is a member
+	 						Entity groupRelation = datastore.get(groupRelationKey);
+	 						
+	 					}
+	 					catch (EntityNotFoundException e) {
+	 						// friend is not a member
+	 						%>
+							
+							<!-- <td>Friend email: </td>  -->
+							<li><input type="checkbox" name="userEmail" value="${fn:escapeXml(friend_id)}">${fn:escapeXml(friend_id)}</li>
+	
+							<%
+	 					}
+	 					
+					%>
+						
 					<%
 	 				}
+	 				
+	 				%>
+	 				<input type="hidden" name="groupName" value="${fn:escapeXml(group_name)}"/>
+	 				<input type="submit" value="Add members" />
+	 			    </form>
+	 			    </ul>
+	 			    <%   
 				}
 			%>
 
-		</table> 
 		</div>
-
-</body>
-</html>

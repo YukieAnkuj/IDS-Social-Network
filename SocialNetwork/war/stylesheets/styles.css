@@ -1,0 +1,137 @@
+body{margin:0px; padding:0px; background:#fffde4 url(images/bodyBg.jpg) repeat-x}
+#mainWrap{width:100%; margin:0px; padding:0px; float:left; background:url(images/headBg.jpg) no-repeat}
+#mainPanel{width:990px; margin:0px; padding:0px; float:left}
+#logoWrap{width:100%; margin:0px; padding:0px; float:left}
+
+h1{width:223px; height:48px; margin:20px 0 0 0; padding:0 110px; float:right; line-height:10px; text-indent:-9999px; background:url(images/logo.png) no-repeat}
+
+
+#loginPanel{width:397px; margin:28px 0 0 0; padding:0 0 0 546px; float:left}
+#loginPanel h2{width:397px; margin:0px; padding:0px; float:left; font-family:Georgia; font-size:27px; color:#497f35; line-height:31px; font-weight:normal}
+#loginPanel input{width:175px; height:18px; margin:9px 0 0 0; padding:3px 0 0 5px; float:left; font-family:Arial; font-size:10px; color:#bb9d59; line-height:14px; border:0px; background:#f9f6d4}
+#loginPanel .blank{width:25px; height:21px; margin:0px; padding:0px; float:left}
+#loginPanel p{width:253px; margin:10px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:16px; color:#ab8e4e; line-height:20px}
+#loginPanel p a{color:#943415; text-decoration:underline}
+#loginPanel .login{width:66px; height:20px; margin:10px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:11px; color:#943415; line-height:20px; text-align:center; text-decoration:none; background:url(images/loginBg.jpg) no-repeat}
+
+
+#greeting{width:990px; margin:145px 0 0 0; padding:0px; float:left}
+#greeting p{margin:0px; font-family:Georgia; font-size:28px; color:#497f35; line-height:32px; text-align:center; text-indent:50px}
+
+
+#leftPanel{width:637px; margin:27px 0 0 0; padding:0 0 0 35px; float:left}
+
+#leftPanel .about{width:604px; margin:0px; padding:0px; float:left}
+#leftPanel .about h2{width:604px; margin:0px; padding:50px; float:left; font-family:Georgia; font-size:30px; color:#0b636b; line-height:34px; font-weight:normal}
+#leftPanel .about h3{width:100px; margin:4px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:18px; color:#943415; line-height:16px; font-weight:normal}
+#leftPanel .about p{width:200px; margin:4px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:18px; color:#bb9d59; line-height:16px}
+#leftPanel .about p span{font-weight:bold}
+
+#leftPanel .interests{width:604px; margin:34px 0 0 0; padding:0px; float:left}
+#leftPanel .interests h2{width:604px; margin:0px; padding:0px; float:left; font-family:Georgia; font-size:24px; color:#2c787b; line-height:28px; font-weight:normal}
+#leftPanel .interests p{width:390px; margin:16px 0 0 0; padding:0 0 0 20px; float:left; font-family:Arial; font-size:18px; color:#bb9d59; line-height:16px}
+#leftPanel .interests p span{font-weight:bold}
+#leftPanel .interests h3{width:390px; margin:16px 0 0 0; padding:0 0 0 20px; float:left; font-family:Georgia; font-size:18px; color:#5c4527; line-height:22px; font-weight:normal}
+#leftPanel .interests ul{width:390px; margin:5px 0 0 0; padding:0 0 0 20px; float:left; display:block }
+#leftPanel .interests ul li{width:390px; margin:0px; padding:0px; float:left; display:block font-family:Arial; font-size:18px; color:#bb9d59; }
+
+#leftPanel .friends{width:604px; margin:34px 0 0 0; padding:0px; float:left}
+#leftPanel .friends h2{width:604px; margin:0px; padding:0px; float:left; font-family:Georgia; font-size:24px; color:#2c787b; line-height:28px; font-weight:normal}
+#leftPanel .friends p{width:390px; margin:14px 0 0 0; padding:0 0 0 20px; float:left; font-family:Arial; font-size:12px; color:#bb9d59; line-height:16px}
+#leftPanel .friends p span{font-weight:bold}
+#leftPanel .friends h3{width:390px; margin:13px 0 0 0; padding:0 0 0 20px; float:left; font-family:Georgia; font-size:18px; color:#5c4527; line-height:22px; font-weight:normal}
+#leftPanel .friends ul{width:390px; margin:5px 0 0 0; padding:0 0 0 20px; float:left; display:block }
+#leftPanel .friends ul li{width:390px; margin:0px; padding:0px; float:left; display:block font-family:Arial; font-size:18px; color:#bb9d59; }
+#leftPanel .friends ul li a{font-family:Arial; font-size:18px; color:#bb9d59; }
+
+
+#leftPanel .membersList{width:604px; margin:34px 0 0 0; padding:0px; float:left}
+#leftPanel .membersList h2{width:604px; margin:0px; padding:0px; float:left; font-family:Georgia; font-size:24px; color:#2c787b; line-height:28px; font-weight:normal}
+
+#leftPanel .membersList p{width:390px; margin:14px 0 0 0; padding:0 0 0 20px; float:left; font-family:Arial; font-size:12px; color:#bb9d59; line-height:16px}
+#leftPanel .membersList p span{font-weight:bold}
+#leftPanel .membersList h3{width:390px; margin:13px 0 0 0; padding:0 0 0 20px; float:left; font-family:Georgia; font-size:18px; color:#5c4527; line-height:22px; font-weight:normal}
+#leftPanel .membersList ul{width:390px; margin:5px 0 0 0; padding:0 0 0 20px; float:left; display:block }
+#leftPanel .membersList ul li{width:390px; margin:0px; padding:0px; float:left; display:block font-family:Arial; font-size:18px; color:#bb9d59; }
+#leftPanel .membersList ul li a{font-family:Arial; font-size:18px; color:#bb9d59; }
+
+
+#leftPanel .changeProfile{width:604px; margin:50px; padding:0px; float:left}
+#leftPanel .changeProfile h2{width:604px; margin:0px; padding:0px; float:left; font-family:Georgia; font-size:30px; color:#0b636b; line-height:34px; font-weight:normal}
+#leftPanel .changeProfile h3{width:604px; margin:4px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:18px; color:#943415; line-height:32px; font-weight:normal}
+#leftPanel .changeProfile p{width:590px; margin:3px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:18px; color:#bb9d59; line-height:16px}
+#leftPanel .changeProfile p span{font-weight:bold}
+#leftPanel .changeProfile p a{ color:#bb9d59}
+
+
+#leftPanel .post{width:590px; margin:0px; padding:0px; float:left}
+#leftPanel .post h2{width:590px; margin:30px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:24px; color:#2c787b; line-height:28px; font-weight:normal}
+#leftPanel .post p{width:590px; margin:13px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:18px; color:#bb9d59; line-height:16px; text-indent:12px; background:url(images/quo.jpg) no-repeat}
+#leftPanel .post p span{font-weight:bold}
+/*#leftPanel .post p .dqo{width:11px; height:9px; text-indent:-9999px; background:url(images/quo.jpg) no-repeat}*/
+#leftPanel .post h3{width:100px; height:40px; margin:6px 0 0 0; padding:0 0 12px 28px; float:left; font-family:Arial; font-size:12px; color:#943415; font-weight:bold;}
+#leftPanel .post h3 span{font-weight:normal}
+#leftPanel .post h3 date{width:590px; padding:0px; float:left; font-family:Arial; font-size:12px; color:#943415; font-weight:normal}
+
+
+
+#leftPanel .formClass{width:604px; margin:0px; padding:0px; float:left}
+#leftPanel .formClass h2{width:590px; margin:30px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:24px; color:#2c787b; line-height:28px; font-weight:normal}
+#leftPanel .formClass h3{width:100px; margin:4px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:18px; color:#943415; line-height:32px; font-weight:normal}
+#leftPanel .formClass p{margin:3px 0 0 0; padding:0px; font-family:Arial; font-size:18px; color:#bb9d59}
+#leftPanel .formClass p span{font-weight:bold}
+#leftPanel .formClass .buttonStyle {}
+#leftPanel .formClass .textAreaClass {padding: 5px}
+#leftPanel .formClass .blank{width:10px; height:19px; margin:0px; padding:0px; float:left}
+
+
+#leftPanel .search{width:604px; margin:0px; padding:0px; float:left}
+#leftPanel .search h2{width:604px; margin:0px; padding:50px; float:left; font-family:Georgia; font-size:30px; color:#0b636b; line-height:34px; font-weight:normal}
+#leftPanel .search h3{width:120px; margin:4px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:20px; color:#943415; line-height:32px; font-weight:normal}
+#leftPanel .search h3 span {font-weight:bold}
+#leftPanel .search p{width:200px; margin:3px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:18px; color:#bb9d59; line-height:16px}
+#leftPanel .search p span{font-weight:bold}
+#leftPanel .search p a{font-family:Arial; font-size:18px; color:#bb9d59;}
+
+
+
+#leftPanel .noProfile{width:604px; margin:0px; padding:0px; float:left}
+#leftPanel .noProfile h2{width:604px; margin:0px; padding:20px; float:left; font-family:Georgia; font-size:30px; color:#0b636b; line-height:34px; font-weight:normal}
+#leftPanel .noProfile h3{width:100px; margin:4px 0 0 0; padding:0px; float:left; font-family:Georgia; font-size:18px; color:#943415; line-height:32px; font-weight:normal}
+#leftPanel .noProfile p{width:200px; margin:3px 0 0 0; padding:20px; float:left; font-family:Arial; font-size:18px; color:#bb9d59; line-height:16px}
+#leftPanel .noProfile p span{font-weight:bold}
+
+
+#rightPanel{width:266px; margin:40px 0 0 0; padding:0 0 74px 36px; float:left; background:url(images/rigthBg.jpg) no-repeat}
+#rightPanel  h2{width:262px;  margin:0px; padding:0px; float:left; font-family:Georgia; font-size:24px; color:#0b636b; line-height:28px; font-weight:normal}
+#rightPanel .view{width:58px; margin:3px 2px 0 0; padding:0 0 0 15px; float:right; font-family:Arial; font-size:11px; color:#943415; font-weight:bold; text-decoration:none; background:url(images/listStyle.jpg) no-repeat 0 4px}
+#rightPanel .pic1{width:262px; height:68px; margin:15px 0 0 0; padding:0px; float:left; background:url(images/pic2.jpg) no-repeat}
+#rightPanel .pic2{width:262px; height:68px; margin:13px 0 0 0; padding:0px; float:left; background:url(images/pic3.jpg) no-repeat}
+#rightPanel .pic3{width:262px; height:68px; margin:13px 0 0 0; padding:0px; float:left; background:url(images/pic4.jpg) no-repeat}
+
+
+#rightPanel .postMessage{width:266px; margin:18px 0 0 0; padding:0px; float:left}
+#rightPanel .postMessage h2{padding:0 0 2px 0}
+#rightPanel .postMessage input{width:150px; height:22px; margin:12px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:11px; color:#943415; line-height:18px; text-align:center; text-decoration:none; background:url(images/contactsBg.jpg) no-repeat}
+#rightPanel .buttonStyle {border: none; background: #FFF url('image.png')}
+#rightPanel .postMessage a{width:93px; height:19px; margin:12px 0 0 0; padding:0px; float:left; font-family:Arial; font-size:11px; color:#943415; line-height:18px; text-align:center; text-decoration:none; background:url(images/contactsBg.jpg) no-repeat}
+#rightPanel .postMessage .blank{width:10px; height:19px; margin:0px; padding:0px; float:left}
+
+#menu{width:990px; margin:32px 0 0 0; padding:0px; float:left}
+#menu ul{width:450px; margin:0px; padding:0px; float:right; display:block}
+#menu ul li{width:auto; margin:0px; padding:0px; float:left; display:block}
+#menu ul li a{width:auto; height:18px; margin:0px; padding:0px; float:left; font-family:Arial; font-size:12px; color:#45ada9; line-height:13px; text-decoration:none; cursor:pointer}
+#menu ul li a:hover{background:url(images/rightCurve.jpg) no-repeat right}
+#menu ul li a span{width:auto; height:16px; margin:0px; padding:2px 8px 0 8px; float:left; cursor:pointer}
+#menu ul li a:hover span{background:url(images/leftCurve.jpg) no-repeat left}
+#menu ul li .blank{width:1px; height:18px; margin:0px; padding:0 5px 0 5px; float:left; background:url(images/mBlank.jpg) no-repeat center top}
+
+
+#footPanel{width:923px; margin:0px; padding:25px 0 29px 0; float:left; background:url(images/footbg.jpg) no-repeat center top}
+#footPanel .nav{width:923px; margin:0px; padding:0px; float:left}
+#footPanel .nav ul{width:375px; margin:0 auto; padding:0px; display:block}
+#footPanel .nav ul li{width:auto; margin:0px; float:left; padding:0px; display:block}
+#footPanel .nav ul li .blank{width:auto; margin:0px; padding:0 7px 0 7px; float:left; font-family:Arial; font-size:11px; font-weight:bold; color:#943415}
+#footPanel .nav ul li a{width:auto; margin:0px; float:left; padding:0px; font-family:Arial; font-size:11px; font-weight:bold; color:#943415; text-decoration:none}
+
+

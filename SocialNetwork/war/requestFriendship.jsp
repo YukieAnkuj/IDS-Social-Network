@@ -16,10 +16,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css" />
 <title>Social Network</title>
 </head>
   <body>
+  
+    <div id="mainWrap">
+	<div id="mainPanel">
+	<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+	
+	%>
+	
+	
+	<%@include file="partial/menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
+	
+	
+	
   	<%
+
+    
 	    // Getting info from form
 	   	ServletRequest req = pageContext.getRequest();
   	
@@ -61,9 +79,16 @@
   	
   	
   	%>
-  
-		<p>Friendship request sent</p>
-		<a href="searchUsers.jsp">Go back</a>
-		
+  <div id="leftPanel">
+		<div class="noProfile"><h2>Friendship request sent</h2>
+		<p><a href="searchUsers.jsp">Go back</a></p>
+		</div>
+	</div>
+	<div id="rightPanel"></div>	
+	
+	<%@include file="partial/footer.jsp" %>
+	
+	</div> <!-- Closing main wrap -->
+	</div> <!--  main panel -->
   </body>
 </html>

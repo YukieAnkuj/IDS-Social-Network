@@ -23,9 +23,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css" />
 <title>Social Network</title>
 </head>
   <body>
+    <div id="mainWrap">
+	<div id="mainPanel">
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -36,8 +39,8 @@
       
 
 %>
-	<%@include file="partial/header.jsp" %>
 	<%@include file="partial/menu.jsp" %>
+	<%@include file="partial/header.jsp" %>
 
 	
 	<% 
@@ -64,43 +67,36 @@
 	 /* -------------------- Specific code ---------------------- */
 	 String targetEmail = userProfileEmail;
 	 %>
-
-	<div class="form"><h1>Create a group</h1>
+	<div id="leftPanel">
+	<div class="formClass"><h2>Create a group</h2>
 
 	  <form action="/groupForm" method="post">
-	    <div>Group name: <input type="text" name="groupName"></div>
-	    <div><textarea name="content" rows="3" cols="60" placeholder="Write a description..."></textarea></div>
-	    <div class="showFriendsGroupForm"><p>Choose members:</p> 
-			<%@include file="partial/showFriendsListGroupForm.jsp" %>
-		</div>
-	    <div><input type="submit" value="Submit" /></div>
-	  </form></div>	
-	 	
-	 	<!--  
-	 			    <form action="/postForm" method="post">
-		      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-		      <div><input type="submit" value="Post message" /></div>
-		      <input type="hidden" name="userNameBoard" value="${fn:escapeXml(userProfile_userName)}"/>
-		      <input type="hidden" name="userNamePoster" value="${fn:escapeXml(loggedUser_userName)}"/>
-		      <input type="hidden" name="boardEmail" value="${fn:escapeXml(userProfile_email)}"/>
-			</form>
-	 	-->
-	<%
+	    <h3>Group name:</h3><input type="text" name="groupName">
+	    <textarea name="description" class="textAreaClass" rows="3" cols="60" placeholder="Write a description..."></textarea>
+	    <input type="hidden" name="userEmail" value="${fn:escapeXml(loggedUser_email)}"/>
+	    <p><br><input type="submit" value="Submit" /></p>
+	  </form>
+	</div>	
 
-%>
+	</div> <!-- End of left Panel -->
+
 
 <%
     } else {
-%> 	<div class="login">
-		<p>Hello!
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></p>
-	</div>
+%> 	
+	<div id="leftPanel">
+	<%@include file="partial/login.jsp" %>
+	</div><!-- End of left panel -->
 <%
     }
 %>
 
-	 
+<div id="rightPanel"></div>
 
+<%@include file="partial/footer.jsp" %>
+	 
+</div> <!-- Closing main wrap -->
+</div> <!--  main panel -->
 
   
   </body>
